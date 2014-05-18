@@ -31,5 +31,14 @@ def fill(duration):
 def main():
     init()
 
+
+    while True:
+        try:
+            thing, duration = raw_input('Do a thing for <thing, time> :').split(',')
+            locals()[thing](duration)
+        except:
+            print "Invalid command"
+
+
 if __name__ == '__main__':
     main()
