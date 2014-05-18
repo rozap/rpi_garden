@@ -38,6 +38,7 @@ def fill(duration):
 
 def main():
     init()
+    stop()
 
 
     while True:
