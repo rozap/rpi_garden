@@ -14,10 +14,17 @@ def init():
     GPIO.setup(VALVE, GPIO.OUT)
 
 
+
+def stop():
+    GPIO.output(PUMP, GPIO.LOW)
+    GPIO.output(VALVE, GPIO.LOW)
+
+
 def drain(duration):
     GPIO.output(PUMP, GPIO.LOW)
     GPIO.output(VALVE, GPIO.HIGH)
     sleep(duration)
+    stop()
 
 
 
@@ -25,6 +32,7 @@ def fill(duration):
     GPIO.output(VALVE, GPIO.LOW)
     GPIO.output(PUMP, GPIO.HIGH)
     sleep(duration)
+    stop()
 
 
 
