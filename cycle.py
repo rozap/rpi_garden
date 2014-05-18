@@ -29,7 +29,7 @@ def fill(duration):
 
 
 def main():
-    # init()
+    init()
 
 
     while True:
