@@ -1,4 +1,4 @@
-import RPi.GPIO as GPIO
+# import RPi.GPIO as GPIO
 from time import sleep
 
 
@@ -29,15 +29,17 @@ def fill(duration):
 
 
 def main():
-    init()
+    # init()
 
 
     while True:
         try:
             thing, duration = raw_input('Do a thing for <thing, time> :').split(',')
-            locals()[thing](duration)
-        except:
+            print "Doing %s for %s seconds" % (thing, duration)
+            globals()[thing](duration)
+        except (KeyError, ValueError) as e:
             print "Invalid command"
+            print e
 
 
 if __name__ == '__main__':
