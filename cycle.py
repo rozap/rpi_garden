@@ -36,7 +36,7 @@ def main():
         try:
             thing, duration = raw_input('Do a thing for <thing, time> :').split(',')
             print "Doing %s for %s seconds" % (thing, duration)
-            globals()[thing](duration)
+            globals()[thing](float(duration))
         except (KeyError, ValueError) as e:
             print "Invalid command"
             print e
