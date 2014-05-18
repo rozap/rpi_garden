@@ -1,17 +1,35 @@
 import RPi.GPIO as GPIO
 from time import sleep
-GPIO.setmode(GPIO.BOARD)
-GPIO.setup(26, GPIO.OUT)
-GPIO.setup(24, GPIO.OUT)
 
 
 
-while True:
-    print "Filling!"
-    GPIO.output(26, GPIO.LOW)
-    GPIO.output(24, GPIO.HIGH)
-    sleep(5000)
-    print "Draining!"
-    GPIO.output(24, GPIO.LOW)
-    GPIO.output(26, GPIO.HIGH)
-    sleep(200)
+PUMP = 24
+VALVE = 26
+
+
+
+def init():
+    GPIO.setmode(GPIO.BOARD)
+    GPIO.setup(PUMP, GPIO.OUT)
+    GPIO.setup(VALVE, GPIO.OUT)
+
+
+def drain(duration):
+    GPIO.output(PUMP, GPIO.LOW)
+    GPIO.output(VALVE, GPIO.HIGH)
+    sleep(duration)
+
+
+
+def fill(duration):
+    GPIO.output(VALVE, GPIO.LOW)
+    GPIO.output(PUMP, GPIO.HIGH)
+    sleep(duration)
+
+
+
+def main():
+    init()
+
+if __name__ == '__main__':
+    main()
