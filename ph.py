@@ -18,8 +18,8 @@ def main():
 
     while True:
         print "Reading PH"
-        bytes = bus.read_byte_data(DEVICE_ADDRESS, 2)
-        print bytes
+        bytes = bus.read_i2c_block_data(DEVICE_ADDRESS, 1)
+	print bytes
         sleep(1)
 
 
