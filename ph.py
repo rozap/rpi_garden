@@ -48,8 +48,8 @@ def main():
     while True:
         print "Reading PH"
         bytes = bus.read_i2c_block_data(DEVICE_ADDRESS, 1)
-        lo = bytes[0]
-        hi = bytes[1]
+        hi = bytes[0]
+        lo = bytes[1]
         adc_res = (hi * 256.0) + lo
         ph = calculate_ph(adc_res)
         print "Ph is %s" % str(ph)
