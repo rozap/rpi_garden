@@ -12,7 +12,7 @@ DEVICE_REG_LEDOUT0 = 0x1d
 v_ref = 3.203
 op_amp_gain = 5.25 
 
-ph7_cal = 2048.0
+ph7_cal = 2951.0
 ph4_cal = 1286.0
 ph_step = 59.16
 
