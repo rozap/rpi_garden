@@ -35,7 +35,8 @@ require([
 	'backbone',
 	'rickshaw',
 	'collections',
-], function(_, Backbone, rickshaw, Collections) {
+	'text!templates/chart.html'
+], function(_, Backbone, rickshaw, Collections, ChartTemplateView) {
 
 
 	var app = {
@@ -49,6 +50,13 @@ require([
 
 		width: 800,
 		height: 400,
+
+		template: _.template(ChartTemplateView),
+
+		events: {
+			'click .next-btn': 'nextPage',
+			'click .prev-btn': 'prevPage',
+		},
 
 		initialize: function() {
 			this.collection = new this.series([]);
@@ -71,11 +79,20 @@ require([
 			}];
 		},
 
+
 		render: function() {
-			console.log(this.adaptData())
+			this.$el.html(this.template({
+				id: this.$el.attr('id'),
+				title: this.title,
+				hasNext: this.collection.hasNext.bind(this.collection),
+				hasPrev: this.collection.hasPrev.bind(this.collection)
+			}));
+
+			console.log($(this.$el.attr('id') + '-chart')[0]);
+
 			var that = this;
 			this._graph = new rickshaw.Graph({
-				element: $(this.chartEl)[0],
+				element: $('#' + this.$el.attr('id') + '-chart')[0],
 				renderer: 'area',
 				series: this.adaptData(),
 			});
@@ -88,7 +105,7 @@ require([
 				orientation: 'left',
 				width: 80,
 				tickFormat: Rickshaw.Fixtures.Number.formatKMBT,
-				element: $(this.chartEl + '-y-axis')[0],
+				element: $('#' + this.$el.attr('id') + 'chart-y-axis')[0],
 			});
 
 			var hoverDetail = new Rickshaw.Graph.HoverDetail({
@@ -108,13 +125,23 @@ require([
 
 		formatY: function(y) {
 			return y + " " + (this.yUnits || this.yName);
-		}
+		},
+
+		nextPage: function() {
+			this.collection.next();
+		},
+
+		prevPage: function() {
+			this.collection.prev();
+		},
+
+
 
 	});
 
 
 	var PHChartView = ChartView.extend({
-		chartEl: '#ph-chart',
+		el: '#ph-view',
 		xName: 'time',
 		yName: 'ph',
 		series: Collections.PHCollection,
@@ -122,7 +149,7 @@ require([
 	});
 
 	var TempChartView = ChartView.extend({
-		chartEl: '#temp-chart',
+		el: '#temp-view',
 		xName: 'time',
 		yName: 'temp',
 		yUnits: 'degrees',

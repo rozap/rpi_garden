@@ -23,14 +23,23 @@ define([
 		comparator: 'time',
 
 		next: function() {
-			this.page++;
+			this.page--;
 			return this._pageFetch();
 		},
 
 		prev: function() {
-			this.page--;
+			this.page++;
 			return this._pageFetch();
 		},
+
+		hasNext: function() {
+			return this.page > 0;
+		},
+
+		hasPrev: function() {
+			console.log(this.length, this.pageSize)
+			return this.length === this.pageSize;
+		}
 
 
 
