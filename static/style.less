@@ -1,0 +1,36 @@
+@import "pure.less";
+@import "rickshaw.less";
+
+@gray-lighter: #dedede;
+@gray-light: darken(@gray-lighter, 20%);
+
+
+body {
+	margin:32px;
+}
+
+.muted {
+	color:@gray-light;
+	font-weight: 100;
+}
+
+
+.charts {
+	padding:32px;
+
+	h3 {
+		margin-top: 32px;
+	}
+
+
+	.chart {
+		position: relative;
+		border-bottom: 1px solid @gray-light;
+
+		 .y-axis {
+			position: absolute;
+			left:-80px;
+			top:0px;
+		}
+	}
+}

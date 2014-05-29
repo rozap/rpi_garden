@@ -20,6 +20,8 @@ define([
 			});
 		},
 
+		comparator: 'time',
+
 		next: function() {
 			this.page++;
 			return this._pageFetch();
@@ -28,7 +30,7 @@ define([
 		prev: function() {
 			this.page--;
 			return this._pageFetch();
-		}
+		},
 
 
 
