@@ -4,7 +4,7 @@ from math import floor
 def Window(object):
 
 
-    def __init__(self, size = 20):
+    def __init__(self, size):
         self.window = deque([], size)
 
     def add(self, value):
