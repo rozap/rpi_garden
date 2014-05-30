@@ -12,11 +12,14 @@ def main():
 
     while True:
         print "Reading PH"
-        bus.write_byte_data(0x70, 0, 81)
-        sleep(.02)
-        bytes = bus.read_i2c_block_data(DEVICE_ADDRESS, 1)
-        print bytes
-        sleep(1)
+        try:
+            bus.write_byte_data(0x70, 0, 81)
+            sleep(.02)
+            bytes = bus.read_i2c_block_data(DEVICE_ADDRESS, 1)
+            print bytes
+            sleep(1)
+        except IOError:
+            print ";_;"
 
 
 if __name__ == '__main__':
