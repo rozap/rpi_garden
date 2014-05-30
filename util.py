@@ -18,9 +18,9 @@ class Window(object):
         c = list(self.window)
         num = 0.0
         denom = 0.0
-        for val, i in enumerate(c):
-            num += ((1 - alpha) ** i) * val
-            denom += (1 - alpha) ** i
+        for i, val in enumerate(c):
+            num += ((1 - alpha) ** i) * float(val)
+            denom += ((1 - alpha) ** i)
         return num / denom
 
     def median(self):
