@@ -15,7 +15,7 @@ def main():
         try:
             bus.write_byte_data(0x70, 0, 81)
             sleep(.02)
-            bytes = bus.read_i2c_block_data(DEVICE_ADDRESS, 1)
+            bytes = i2c.read_word_data(0x70, 2) / 255
             print bytes
             sleep(1)
         except IOError:
