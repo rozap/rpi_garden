@@ -11,8 +11,8 @@ def main():
     window = Window()
 
 
+    print "Reading Level"
     while True:
-        print "Reading Level"
         try:
             bus.write_byte_data(DEVICE_ADDRESS, 0, 81)
             sleep(.02)
