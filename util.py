@@ -17,5 +17,5 @@ class Window(object):
         c = sorted(list(self.window))
         if len(c) == 0:
             return 0
-        pivot = floor(len(c) / 2.0)
+        pivot = int(floor(len(c) / 2.0))
         return c[pivot: (pivot+1)][0]
