@@ -20,9 +20,9 @@ def main():
             window.add(bytes)
             sleep(.2)
 
-            print "avg: %s median %s" % (window.average(), window.median())
+            print "moving %s avg: %s median %s" % (window.moving_average(), window.average(), window.median())
         except IOError:
-            print ";_;"
+            pass
 
 
 if __name__ == '__main__':
