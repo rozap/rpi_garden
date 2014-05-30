@@ -19,6 +19,13 @@ def get_temp(*args, **kwargs):
         return parsed
     return 500, 'you broke it'
 
+@json_view
+@paginate
+def get_level(*args, **kwargs):
+    with open(settings.level_file, 'r') as f:
+        parsed = json.loads(f.read())
+        return parsed
+    return 500, 'you broke it'
 
 
 
@@ -27,7 +34,8 @@ class Api(object):
 
     endpoints = {
         'ph' : 'get_ph',
-        'temp' : 'get_temp'
+        'temp' : 'get_temp',
+        'level' : 'get_level'
     }
 
     def __init__(self, app):

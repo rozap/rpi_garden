@@ -37,7 +37,6 @@ define([
 		},
 
 		hasPrev: function() {
-			console.log(this.length, this.pageSize)
 			return this.length === this.pageSize;
 		}
 
@@ -53,10 +52,14 @@ define([
 		name: 'temp',
 	})
 
+	var LevelCollection = APICollection.extend({
+		name: 'level',
+	})
 
 	return {
 		PHCollection: PHCollection,
-		TempCollection: TempCollection
+		TempCollection: TempCollection,
+		LevelCollection: LevelCollection
 
 
 

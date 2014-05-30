@@ -157,10 +157,20 @@ require([
 		color: '#015A61',
 	});
 
+	var LevelChartView = ChartView.extend({
+		el: '#level-view',
+		xName: 'time',
+		yName: 'level',
+		yUnits: 'inches',
+		series: Collections.LevelCollection,
+		color: '#b4d455',
+	});
+
 
 
 	new PHChartView();
 	new TempChartView();
+	new LevelChartView();
 
 	console.info("hello world")
 
