@@ -3,7 +3,7 @@ from math import floor
 
 class Window(object):
 
-    def __init__(self, size = 20, alpha = .5):
+    def __init__(self, size = 20):
         self.window = deque([], size)
 
     def add(self, value):
@@ -14,13 +14,13 @@ class Window(object):
         return float(sum(c)) / float(len(c))
 
 
-    def moving_average(self):
+    def moving_average(self, alpha = .5):
         c = list(self.window)
         num = 0.0
         denom = 0.0
         for val, i in enumerate(c):
-            num += ((1 - a) ** i) * val
-            denom += (1 - a) ** i
+            num += ((1 - alpha) ** i) * val
+            denom += (1 - alpha) ** i
         return num / denom
 
     def median(self):
