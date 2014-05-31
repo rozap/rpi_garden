@@ -16,3 +16,8 @@ class StatCollector(object):
             updated = json.dumps(existing)
             f.write(updated)
 
+    def write(self):
+        self.push_datapoint(self.window.moving_average())
+
+    def __str__(self):
+        return "%s is %s" % (self.name, self.window.moving_average())

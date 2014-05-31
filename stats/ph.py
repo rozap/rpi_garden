@@ -53,5 +53,4 @@ class PHCollector(StatCollector):
         adc_res = (hi * 256.0) + lo
         ph = calculate_ph(adc_res)
         self.window.add(ph)
-        self.push_datapoint(self.window.moving_average())
 
