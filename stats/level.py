@@ -17,7 +17,8 @@ class LevelCollector(StatCollector):
 
     def collect(self, bus):
         bus.write_byte_data(DEVICE_ADDRESS, 0, 81)
-        sleep(.02)
-        bytes = bus.read_word_data(DEVICE_ADDRESS, 2) / 255
-        self.window.add(bytes)
+        sleep(.1)
+        distance = bus.read_word_data(DEVICE_ADDRESS, 2) / 255
+        min_distance = bus.read_word_data(DEVICE_ADDRESS, 4) / 255
+        self.window.add(distance)
         self.push_datapoint(self.window.moving_average())
