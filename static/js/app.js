@@ -142,7 +142,7 @@ require([
 
 
 	var PHChartView = ChartView.extend({
-		title: 'PH over time',
+		title: 'ph',
 		el: '#ph-view',
 		xName: 'time',
 		yName: 'ph',
@@ -151,7 +151,7 @@ require([
 	});
 
 	var TempChartView = ChartView.extend({
-		title: 'Temperature over time',
+		title: 'Temperature',
 		el: '#temp-view',
 		xName: 'time',
 		yName: 'temp',
@@ -161,7 +161,7 @@ require([
 	});
 
 	var LevelChartView = ChartView.extend({
-		title: 'Water level over time',
+		title: 'Water level',
 		el: '#level-view',
 		xName: 'time',
 		yName: 'level',
