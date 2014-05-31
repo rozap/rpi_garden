@@ -16,10 +16,13 @@ class CollectionManager(object):
     def collect(self, *args, **kwargs):
         collectors = args[0]
         bus = smbus.SMBus(1)
-
         while True:
-            # for collector in collectors:
-            #     collector.collect(bus)
+            try:
+                for collector in collectors:
+                    collector.collect(bus)
+            except IOError as e:
+                print e
+                #never stoppin for nobody
             sleep(1)
 
 
