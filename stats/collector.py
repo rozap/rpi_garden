@@ -28,13 +28,13 @@ class CollectionManager(object):
                         print "%s failed, running again..." % collector.name
                 #never stoppin for nobody
             iteration += 1
-            sleep(1)
+            sleep(5)
 
             for collector in collectors:
                 print collector
 
             #only write the value sometimes
-            if iteration % 120 == 0:
+            if iteration % 20 == 0:
                 for collector in collectors:
                     collector.write()
 
