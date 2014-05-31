@@ -3,17 +3,13 @@ define([
 	'backbone'
 ], function(_, Backbone) {
 
-	var Calibration = Backbone.Model.extend({
-
-		url: function() {
-			return '/api/calibration'
-		},
-
-
-	});
 
 
 	var State = Backbone.Model.extend({
+		initialize: function(props, app) {
+			app.dispatcher.on('update', this.fetch.bind(this));
+		},
+
 		url: function() {
 			return '/api/state'
 		}

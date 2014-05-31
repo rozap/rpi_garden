@@ -7,6 +7,16 @@ define([
 
 		pageSize: 60,
 		page: 0,
+
+		initialize: function(props, app) {
+			app.dispatcher.on('update', this.autoUpdate.bind(this));
+		},
+
+
+		autoUpdate: function() {
+			this.page === 0 && this.fetch();
+		},
+
 		url: function() {
 			return '/api/' + this.name
 		},

@@ -46,6 +46,11 @@ require([
 		dispatcher: _.clone(Backbone.Events),
 	}
 
+	//I'm too lazy to setup python websockets, so we gon poll stuff
+	//hi h8ers
+	setInterval(function() {
+		app.dispatcher.trigger('update');
+	}, 5000);
 
 
 	var ChartView = Backbone.View.extend({
@@ -62,7 +67,7 @@ require([
 		},
 
 		initialize: function() {
-			this.collection = new this.series([]);
+			this.collection = new this.series([], app);
 			this.listenTo(this.collection, 'sync', this.render);
 			this.collection.fetch();
 		},
@@ -178,7 +183,7 @@ require([
 		template: _.template(StateViewTemplate),
 
 		initialize: function() {
-			this.model = new Models.State();
+			this.model = new Models.State({}, app);
 			this.listenTo(this.model, 'sync', this.render);
 			this.model.fetch();
 		},
