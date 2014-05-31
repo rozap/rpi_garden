@@ -38,6 +38,13 @@ def change_state(*args, **kwargs):
 
 
 
+def get_state(state):
+    def lol(*args, **kwargs):
+        return state.state
+    return json_view(lol)
+
+
+
 
 
 class Api(object):
@@ -50,8 +57,10 @@ class Api(object):
         'state' : ('change_state', ('POST',)),
     }
 
-    def __init__(self, app):
+    def __init__(self, app, state):
         base = '/api/%s'
         for route, endpoint in self.endpoints.iteritems():
             cb, methods = endpoint
             app.add_url_rule(base % route, view_func = LazyView('api.api.%s' % cb), methods = methods)
+
+        app.add_url_rule(base % 'state', view_func = get_state(state))
