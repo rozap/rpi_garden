@@ -2,6 +2,7 @@ import smbus
 from util import Window
 import settings
 from stats.stat_collector import StatCollector
+from time import sleep
 
 DEVICE_ADDRESS = 0x70
 
