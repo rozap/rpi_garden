@@ -20,10 +20,10 @@ class CollectionManager(object):
             try:
                 for collector in collectors:
                     collector.collect(bus)
-                sleep(1)
             except Exception as e:
                 print e
                 #never stoppin for nobody
+            sleep(1)
 
 
 

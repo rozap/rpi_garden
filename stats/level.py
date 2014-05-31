@@ -14,7 +14,7 @@ class LevelCollector(StatCollector):
         self.file = settings.level_file
         
 
-    def collect(bus):
+    def collect(self, bus):
         bus.write_byte_data(DEVICE_ADDRESS, 0, 81)
         sleep(.02)
         bytes = bus.read_word_data(DEVICE_ADDRESS, 2) / 255

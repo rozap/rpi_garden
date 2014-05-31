@@ -46,7 +46,7 @@ class PHCollector(StatCollector):
         self.file = settings.ph_file
         
 
-    def collect(bus):
+    def collect(self, bus):
         bytes = bus.read_i2c_block_data(DEVICE_ADDRESS, 1)
         hi = bytes[0]
         lo = bytes[1]
