@@ -1,7 +1,7 @@
 import smbus
 from util import Window
 import settings
-from stats.collector import StatCollector
+from stats.stat_collector import StatCollector
 
 DEVICE_ADDRESS = 0x70
 
