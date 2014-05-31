@@ -12,4 +12,4 @@ if __name__ == "__main__":
     Api(app)
     collection_manager = CollectionManager()
     print "Running web app..."
-    app.run(debug = True)
+    app.run(host = '0.0.0.0', debug = True)
