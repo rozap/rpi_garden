@@ -11,6 +11,5 @@ def index():
 if __name__ == "__main__":
     Api(app)
     collection_manager = CollectionManager()
-    collection_manager.start()
     print "Running web app..."
     app.run(debug = True)
