@@ -20,7 +20,7 @@ class CollectionManager(object):
             try:
                 for collector in collectors:
                     collector.collect(bus)
-            except Exception as e:
+            except IOError as e:
                 print e
                 #never stoppin for nobody
             sleep(1)
