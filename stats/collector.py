@@ -10,10 +10,11 @@ class CollectionManager(object):
 
     def __init__(self):
             self.collectors = [PHCollector(), LevelCollector()]
-            self.thread = threading.Thread(target = self.collect, args = (self.collectors))
+            self.thread = threading.Thread(target = self.collect, args = (self.collectors,))
             self.thread.start()
 
-    def collect(self, collectors):
+    def collect(self, *args, **kwargs):
+        collectors = args[0]
         bus = smbus.SMBus(1)
         while True:
             try:
