@@ -9,9 +9,9 @@ import smbus
 class CollectionManager(object):
 
     def __init__(self):
-            self.collectors = [PHCollector(), LevelCollector()]
-            self.thread = threading.Thread(target = self.collect, args = (self.collectors,))
-            self.thread.start()
+        self.collectors = [PHCollector(), LevelCollector()]
+        self.thread = threading.Thread(target = self.collect, args = (self.collectors,))
+        self.thread.start()
 
     def collect(self, *args, **kwargs):
         collectors = args[0]

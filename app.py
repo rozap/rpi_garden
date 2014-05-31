@@ -5,11 +5,12 @@ app = Flask(__name__)
 
 
 @app.route("/")
-def hello():
+def index():
     return render_template('index.html')
 
 if __name__ == "__main__":
     Api(app)
     collection_manager = CollectionManager()
     collection_manager.start()
+    print "Running web app..."
     app.run(debug = True)
