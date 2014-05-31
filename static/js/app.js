@@ -37,7 +37,9 @@ require([
 	'collections',
 	'models',
 	'text!templates/chart.html',
-], function(_, Backbone, rickshaw, Collections, Models, ChartTemplateView) {
+	'text!templates/state.html',
+
+], function(_, Backbone, rickshaw, Collections, Models, ChartTemplateView, StateViewTemplate) {
 
 
 	var app = {
@@ -170,11 +172,34 @@ require([
 		color: '#015A61',
 	});
 
+	var StateView = Backbone.View.extend({
+
+		el: '#state-view',
+		template: _.template(StateViewTemplate),
+
+		initialize: function() {
+			this.model = new Models.State();
+			this.listenTo(this.model, 'sync', this.render);
+			this.model.fetch();
+		},
+
+		render: function() {
+			this.$el.html(this.template({
+				model: this.model.toJSON()
+			}));
+			return this
+		}
+
+
+
+	});
+
 
 
 	new PHChartView();
 	new TempChartView();
 	new LevelChartView();
+	new StateView();
 
 	console.info("hello world")
 
