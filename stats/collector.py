@@ -17,13 +17,16 @@ class CollectionManager(object):
         collectors = args[0]
         bus = smbus.SMBus(1)
         while True:
-            try:
-                for collector in collectors:
-                    collector.collect(bus)
-            except IOError as e:
-                print e
+            for collector in collectors:
+                run_success = False
+                while not run_success:
+                    try:
+                        collector.collect(bus)
+                        run_success = True
+                    except IOError:
+                        print "%s failed, running again..." % collector.name
                 #never stoppin for nobody
-            sleep(10)
+            sleep(120)
 
 
 
