@@ -193,7 +193,7 @@ require([
 				model: this.model.toJSON()
 			}));
 			return this
-		}
+		},
 
 
 

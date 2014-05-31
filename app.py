@@ -1,6 +1,8 @@
 from flask import Flask, render_template
 from api.api import Api 
 import sys
+from time import mktime
+from datetime import datetime
 app = Flask(__name__)
 
 
@@ -9,10 +11,24 @@ def index():
     return render_template('index.html')
 
 
+def now():
+    return int(mktime(datetime.now().timetuple()))
+
 class State(object):
 
     def __init__(self):
-        self.state = {'draining' : False, 'filling' : False}
+        self.state = {
+        'draining' : {
+            'is' : True,
+            'duration' : 0,
+            'started' : now()
+            }, 
+        'filling' : {
+            'is' : False, 
+            'duration' : 0, 
+            'started' : now()
+            }
+        }
 
     def set(self, state):
         self.state = state
@@ -20,11 +36,19 @@ class State(object):
     def get(self):
         return self.state
 
-    def set_filling(self, b):
-        self.state['filling'] = b
+    def set_filling(self, b, duration):
+        self.state['filling'] = {
+            'is' : b,
+            'duration' : duration,
+            'started' : now()
+        }
 
-    def set_draining(self, b):
-        self.state['draining'] = b
+    def set_draining(self, b, duration):
+        self.state['draining'] = {
+            'is' : b,
+            'duration' : duration,
+            'started' : now()
+        }
 
 
 
