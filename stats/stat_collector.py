@@ -5,7 +5,7 @@ import json
 class StatCollector(object):
 
     def push_datapoint(self, value):
-        with open('../data/%s' % self.file, 'r+') as f:
+        with open('../%s' % self.file, 'r+') as f:
             try:
                 existing = json.loads(f.read())
             except ValueError:
