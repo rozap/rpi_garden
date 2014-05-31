@@ -30,7 +30,8 @@ class CollectionManager(object):
             iteration += 1
             sleep(1)
 
-            [print collector for collector in collectors]
+            for collector in collectors:
+                print collector
 
             #only write the value sometimes
             if iteration % 120 == 0:
