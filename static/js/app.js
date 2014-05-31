@@ -35,8 +35,9 @@ require([
 	'backbone',
 	'rickshaw',
 	'collections',
-	'text!templates/chart.html'
-], function(_, Backbone, rickshaw, Collections, ChartTemplateView) {
+	'models',
+	'text!templates/chart.html',
+], function(_, Backbone, rickshaw, Collections, Models, ChartTemplateView) {
 
 
 	var app = {

@@ -47,7 +47,7 @@ class Api(object):
         'ph' : ('get_ph', ('GET',)),
         'temp' : ('get_temp', ('GET',)),
         'level' : ('get_level', ('GET',)),
-        'state' : ('change_state', ('POST',))
+        'state' : ('change_state', ('POST',)),
     }
 
     def __init__(self, app):
