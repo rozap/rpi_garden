@@ -23,7 +23,7 @@ class CollectionManager(object):
             except IOError as e:
                 print e
                 #never stoppin for nobody
-            sleep(1)
+            sleep(10)
 
 
 
