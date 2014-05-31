@@ -1,6 +1,6 @@
 import threading
 from datetime import datetime, timedelta
-from time import mktime
+from time import mktime, sleep
 import json
 from ph import PHCollector
 from level import LevelCollector
@@ -19,6 +19,7 @@ class CollectionManager(object):
             try:
                 for collector in collectors:
                     collector.collect(bus)
+                sleep(1)
             except Exception as e:
                 print e
                 #never stoppin for nobody
