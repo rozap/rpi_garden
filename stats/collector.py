@@ -28,7 +28,7 @@ class CollectionManager(object):
                         print "%s failed, running again..." % collector.name
                 #never stoppin for nobody
             iteration += 1
-            sleep(5)
+            sleep(3)
 
             for collector in collectors:
                 print collector

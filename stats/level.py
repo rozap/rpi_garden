@@ -21,4 +21,3 @@ class LevelCollector(StatCollector):
         distance = bus.read_word_data(DEVICE_ADDRESS, 2) / 255
         min_distance = bus.read_word_data(DEVICE_ADDRESS, 4) / 255
         self.window.add(distance)
-        self.push_datapoint(self.window.moving_average())
