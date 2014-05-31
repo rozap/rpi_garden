@@ -27,7 +27,7 @@ class CollectionManager(object):
 
 
 
-class Collector(object):
+class StatCollector(object):
 
     def push_datapoint(self, value):
         with open('../data/%s' % self.file, 'r+') as f:

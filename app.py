@@ -1,5 +1,5 @@
 from flask import Flask, render_template
-from api.api import 
+from api.api import Api 
 from stats.collector import CollectionManager
 app = Flask(__name__)
 

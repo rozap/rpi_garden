@@ -1,12 +1,12 @@
 import smbus
 from util import Window
-from .. import settings
-from collector import Collector
+import settings
+from stats.collector import StatCollector
 
 DEVICE_ADDRESS = 0x70
 
 
-class LevelCollector(Collector):
+class LevelCollector(StatCollector):
 
     def __init__(self):
         self.window = Window()

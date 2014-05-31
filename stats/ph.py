@@ -1,7 +1,7 @@
 import smbus
 from util import Window
-from .. import settings
-from collector import Collector
+import settings
+from stats.collector import StatCollector
 
 DEVICE_ADDRESS = 0x4d 
 DEVICE_REG_MODE1 = 0x00
@@ -38,7 +38,7 @@ def calculate_ph(res):
     return ph
 
 
-class PHCollector(Collector):
+class PHCollector(StatCollector):
 
     def __init__(self):
         self.window = Window()
