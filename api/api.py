@@ -28,17 +28,30 @@ def get_level(*args, **kwargs):
     return 500, 'you broke it'
 
 
+@json_view
+def change_state(*args, **kwargs):
+    with open(settings.state_file, 'r+') as f:
+        try:
+            state = json.loads(f.read())
+        except ValueError:
+            state = {}
+
+
+
+
 
 class Api(object):
 
 
     endpoints = {
-        'ph' : 'get_ph',
-        'temp' : 'get_temp',
-        'level' : 'get_level'
+        'ph' : ('get_ph', ('GET',)),
+        'temp' : ('get_temp', ('GET',)),
+        'level' : ('get_level', ('GET',)),
+        'state' : ('change_state', ('POST',))
     }
 
     def __init__(self, app):
         base = '/api/%s'
-        for route, cb in self.endpoints.iteritems():
-            app.add_url_rule(base % route, view_func = LazyView('api.api.%s' % cb), methods = ('GET',))
+        for route, endpoint in self.endpoints.iteritems():
+            cb, methods = endpoint
+            app.add_url_rule(base % route, view_func = LazyView('api.api.%s' % cb), methods = methods)

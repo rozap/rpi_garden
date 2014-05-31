@@ -4,6 +4,29 @@
 @gray-lighter: #dedede;
 @gray-light: darken(@gray-lighter, 20%);
 
+@red: #F54551;
+@green: #A9C388;
+@yellow: #EEC05E;
+@med-blue: #015A61;
+@dark: lighten(#2A383B, 10%);
+
+
+* {
+	box-sizing:border-box;
+}
+
+a {
+	text-decoration: none;
+	color:@dark;
+	&:hover {
+		color: darken(@dark, 30%);
+	};
+}
+
+a.pager {
+	font-weight: 100;
+	font-size: 85%;
+}
 
 body {
 	margin:32px;
@@ -18,19 +41,26 @@ body {
 .charts {
 	padding:32px;
 
-	h3 {
-		margin-top: 32px;
-	}
+	.chart-wrap {
+		display: inline-block;
+		width:50%;
+		float:left;
+		padding:0px 32px;
+
+		h3 {
+			margin-top: 32px;
+		}
 
 
-	.chart {
-		position: relative;
-		border-bottom: 1px solid @gray-light;
+		.chart {
+			position: relative;
+			border-bottom: 1px solid @gray-lighter;
 
-		 .y-axis {
-			position: absolute;
-			left:-80px;
-			top:0px;
+			 .y-axis {
+				position: absolute;
+				left:-80px;
+				top:0px;
+			}
 		}
 	}
 }

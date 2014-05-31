@@ -1456,6 +1456,20 @@ a.pure-button-selected {
   background: rgba(255, 255, 255, 0.2);
   border-radius: 3px;
 }
+* {
+  box-sizing: border-box;
+}
+a {
+  text-decoration: none;
+  color: #3f5459;
+}
+a:hover {
+  color: #000000;
+}
+a.pager {
+  font-weight: 100;
+  font-size: 85%;
+}
 body {
   margin: 32px;
 }
@@ -1466,14 +1480,20 @@ body {
 .charts {
   padding: 32px;
 }
-.charts h3 {
+.charts .chart-wrap {
+  display: inline-block;
+  width: 50%;
+  float: left;
+  padding: 0px 32px;
+}
+.charts .chart-wrap h3 {
   margin-top: 32px;
 }
-.charts .chart {
+.charts .chart-wrap .chart {
   position: relative;
-  border-bottom: 1px solid #ababab;
+  border-bottom: 1px solid #dedede;
 }
-.charts .chart .y-axis {
+.charts .chart-wrap .chart .y-axis {
   position: absolute;
   left: -80px;
   top: 0px;

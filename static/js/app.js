@@ -141,6 +141,7 @@ require([
 
 
 	var PHChartView = ChartView.extend({
+		title: 'PH over time',
 		el: '#ph-view',
 		xName: 'time',
 		yName: 'ph',
@@ -149,21 +150,23 @@ require([
 	});
 
 	var TempChartView = ChartView.extend({
+		title: 'Temperature over time',
 		el: '#temp-view',
 		xName: 'time',
 		yName: 'temp',
 		yUnits: 'degrees',
 		series: Collections.TempCollection,
-		color: '#015A61',
+		color: '#F54551',
 	});
 
 	var LevelChartView = ChartView.extend({
+		title: 'Water level over time',
 		el: '#level-view',
 		xName: 'time',
 		yName: 'level',
 		yUnits: 'inches',
 		series: Collections.LevelCollection,
-		color: '#b4d455',
+		color: '#015A61',
 	});
 
 

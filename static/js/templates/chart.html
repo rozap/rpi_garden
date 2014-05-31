@@ -1,15 +1,15 @@
-<h3><%- title %></h3>
-<div class="chart">
-	<div id="<%- id %>-chart" class="rickshaw_graph"></div>
-	<div id="<%- id %>-y-axis" class="y-axis"></div>
+	<h3><%- title %></h3>
+	<div class="chart">
+		<div id="<%- id %>-chart" class="rickshaw_graph"></div>
+		<div id="<%- id %>-y-axis" class="y-axis"></div>
 
-	<div class="controls">
-		<% if(hasPrev()) { %>
-			<a class="prev-btn" href="javascript:void(0)">Previous</a>
-		<% } %>
-		<% if(hasNext()) { %>
-			<a class="next-btn" href="javascript:void(0)">Next</a>
-		<% } %>
+		<div class="controls">
+			<% if(hasPrev()) { %>
+				<a class="pager prev-btn" href="javascript:void(0)"><< Previous</a>
+			<% } %>
+			<% if(hasNext()) { %>
+				<a class="pager next-btn" href="javascript:void(0)">Next >></a>
+			<% } %>
 
+		</div>
 	</div>
-</div>
