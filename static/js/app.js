@@ -186,6 +186,7 @@ require([
 			this.model = new Models.State({}, app);
 			this.listenTo(this.model, 'sync', this.render);
 			this.model.fetch();
+			this._interval = setInterval(this.render.bind(this), 1000);
 		},
 
 		render: function() {
