@@ -43,7 +43,7 @@ def main():
 
     while True:
 	fill(5)
-	drain(500)
+	drain(5)
 
 if __name__ == '__main__':
     main()
