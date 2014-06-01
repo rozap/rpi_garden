@@ -40,7 +40,7 @@ def change_state(*args, **kwargs):
 
 def get_state(state):
     def lol(*args, **kwargs):
-        return state.state
+        return state.get()
     return json_view(lol)
 
 

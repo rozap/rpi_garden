@@ -34,6 +34,7 @@ class State(object):
         self.state = state
 
     def get(self):
+        self.state['now'] = now() 
         return self.state
 
     def set_filling(self, b, duration):
