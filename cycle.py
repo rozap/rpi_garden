@@ -46,10 +46,12 @@ class Cycle(object):
 
     def cycle(self):
         while True:
-            self.state.set_filling(True, FILL_DURATION)
-            self.fill(FILL_DURATION)
-            self.state.set_draining(True, DRAIN_DURATION)
-            self.drain(DRAIN_DURATION)
-
+            try:
+                self.state.set_filling(True, FILL_DURATION)
+                self.fill(FILL_DURATION)
+                self.state.set_draining(True, DRAIN_DURATION)
+                self.drain(DRAIN_DURATION)
+            except:
+                print "WTF? something broke in cycle"
 
 
