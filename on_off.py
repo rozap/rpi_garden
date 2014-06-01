@@ -3,8 +3,8 @@ from time import sleep
 
 
 
-PUMP = 24
-VALVE = 26
+PUMP = 26
+VALVE = 24
 
 
 
@@ -42,7 +42,7 @@ def main():
 
 
     while True:
-	fill(1000)
+	fill(5)
 	drain(500)
 
 if __name__ == '__main__':
