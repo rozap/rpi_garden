@@ -1,7 +1,7 @@
 <% if(model.filling && model.filling.is) { %>
 	<h3>currently filling...</h3>
 	<h4>Running for 
-		<%- model.now - model.filling.started) %> 
+		<%- model.now - model.filling.started %> 
 		seconds of 
 		<%- model.filling.duration %>
 	</h4>
@@ -10,7 +10,7 @@
 <% if(model.draining && model.draining.is) { %>
 	<h3>currently draining...</h3>
 	<h4>Running for 
-		<%- model.now - model.filling.started) %> 
+		<%- model.now - model.filling.started %> 
 		seconds of 
 		<%- model.draining.duration %>
 	</h4>
