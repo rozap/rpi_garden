@@ -5,7 +5,7 @@ define([
 
 	var APICollection = Backbone.Collection.extend({
 
-		pageSize: 600,
+		pageSize: 1000,
 		page: 0,
 
 		initialize: function(props, app) {
@@ -21,13 +21,14 @@ define([
 			return '/api/' + this.name
 		},
 
-		_pageFetch: function() {
-			return this.fetch({
+		fetch: function(options) {
+			options = _.extend({
 				data: {
 					offset: this.page * this.pageSize,
 					count: this.pageSize
 				}
-			});
+			}, options);
+			return Backbone.Collection.prototype.fetch.call(this, options);
 		},
 
 		comparator: 'time',
