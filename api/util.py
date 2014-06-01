@@ -13,7 +13,6 @@ class Encoder(json.JSONEncoder):
 def json_view(fn):
     def wrapped(*args, **kwargs):
         res = fn(*args, **kwargs)
-        print res
         if type(res) == list or len(res) == 1 or type(res) == dict:
             result = res
             status = 200
