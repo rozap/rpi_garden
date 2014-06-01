@@ -49,8 +49,8 @@ require([
 	//I'm too lazy to setup python websockets, so we gon poll stuff
 	//hi h8ers
 	setInterval(function() {
-		app.dispatcher.trigger('update');
-	}, 5000);
+		app.dispatcher.trigger('fetchNewData');
+	}, 120000);
 
 
 	var ChartView = Backbone.View.extend({
@@ -186,7 +186,7 @@ require([
 			this.model = new Models.State({}, app);
 			this.listenTo(this.model, 'sync', this.render);
 			this.model.fetch();
-			this._interval = setInterval(this.render.bind(this), 1000);
+			this._interval = setInterval(this.model.fetch.bind(this.model), 3000);
 		},
 
 		render: function() {

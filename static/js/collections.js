@@ -9,7 +9,7 @@ define([
 		page: 0,
 
 		initialize: function(props, app) {
-			app.dispatcher.on('update', this.autoUpdate.bind(this));
+			app.dispatcher.on('fetchNewData', this.autoUpdate.bind(this));
 		},
 
 
