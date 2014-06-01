@@ -6,8 +6,8 @@ import threading
 
 PUMP = 26
 VALVE = 24
-DRAIN_DURATION = 2000
-FILL_DURATION = 900
+DRAIN_DURATION = 1900
+FILL_DURATION = 800
 
 class Cycle(object):
 
