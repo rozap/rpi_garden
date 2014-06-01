@@ -4,12 +4,13 @@ from time import mktime, sleep
 import json
 from ph import PHCollector
 from level import LevelCollector
+from temp import TempCollector
 import smbus
 
 class CollectionManager(object):
 
     def __init__(self):
-        self.collectors = [PHCollector(), LevelCollector()]
+        self.collectors = [PHCollector(), LevelCollector(), TempCollector()]
         self.thread = threading.Thread(target = self.collect, args = (self.collectors,))
         self.thread.start()
 
