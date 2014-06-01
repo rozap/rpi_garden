@@ -23,7 +23,7 @@ class TempCollector(StatCollector):
         self.device_file = self.device_folder + '/w1_slave'
         
 
-    def read_temp_raw():
+    def read_temp_raw(self):
         with open(self.device_file, 'r') as f:
             return f.readlines()
 
