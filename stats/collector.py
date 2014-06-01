@@ -33,7 +33,7 @@ class CollectionManager(object):
             sleep(3)
 
             for collector in collectors:
-                print collector
+                self.logger.info(str(collector))
 
             #only write the value sometimes
             if iteration % 20 == 0:
