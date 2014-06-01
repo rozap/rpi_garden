@@ -27,8 +27,8 @@ class Cycle(object):
         self.logger.info("Drain and pump off")
         GPIO.output(PUMP, GPIO.LOW)
         GPIO.output(VALVE, GPIO.LOW)
-        self.state.set_draining(False)
-        self.state.set_filling(False)
+        self.state.set_draining(False, 0)
+        self.state.set_filling(False, 0)
 
 
 
