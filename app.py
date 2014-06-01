@@ -37,6 +37,7 @@ class State(object):
         return self.state
 
     def set_filling(self, b, duration):
+        self.state['draining']['is'] = False
         self.state['filling'] = {
             'is' : b,
             'duration' : duration,
@@ -44,6 +45,7 @@ class State(object):
         }
 
     def set_draining(self, b, duration):
+        self.state['filling']['is'] = False
         self.state['draining'] = {
             'is' : b,
             'duration' : duration,
