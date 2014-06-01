@@ -7,7 +7,7 @@ import threading
 PUMP = 26
 VALVE = 24
 DRAIN_DURATION = 2400
-FILL_DURATION = 1800
+FILL_DURATION = 1200
 
 class Cycle(object):
 
@@ -46,10 +46,10 @@ class Cycle(object):
 
     def cycle(self):
         while True:
-            self.state.set_filling(True, FILL_DURATION)
-            self.fill(FILL_DURATION)
             self.state.set_draining(True, DRAIN_DURATION)
             self.drain(DRAIN_DURATION)
+            self.state.set_filling(True, FILL_DURATION)
+            self.fill(FILL_DURATION)
 
 
 
