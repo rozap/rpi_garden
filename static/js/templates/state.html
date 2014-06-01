@@ -1,4 +1,4 @@
-<% if(model.filling.is) { %>
+<% if(model.filling && model.filling.is) { %>
 	<h3>currently filling...</h3>
 	<h4>Running for 
 		<%- Math.round(((new Date().getTime() / 1000) - model.filling.started)) %> 
@@ -7,7 +7,7 @@
 	</h4>
 <% } %>
 
-<% if(model.draining.is) { %>
+<% if(model.draining && model.draining.is) { %>
 	<h3>currently draining...</h3>
 	<h4>Running for 
 		<%- Math.round(((new Date().getTime() / 1000) - model.draining.started)) %> 
