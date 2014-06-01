@@ -35,12 +35,12 @@ define([
 
 		next: function() {
 			this.page--;
-			return this._pageFetch();
+			return this.fetch();
 		},
 
 		prev: function() {
 			this.page++;
-			return this._pageFetch();
+			return this.fetch();
 		},
 
 		hasNext: function() {
