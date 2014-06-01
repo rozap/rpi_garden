@@ -4,8 +4,8 @@ import threading
 
 
 
-PUMP = 24
-VALVE = 26
+PUMP = 26
+VALVE = 24
 DRAIN_DURATION = 1200
 FILL_DURATION = 1000
 
