@@ -1,4 +1,3 @@
-import settings
 import smbus
 import json
 DEVICE_ADDRESS = 0x4d 
@@ -16,15 +15,18 @@ def main():
         adc_res += (hi * 256.0) + lo
 
     res = adc_res / 20
-
     print "Res is %s" % res
-    ph_kind = "ph%s_cal" % int(raw_input("Is this ph4 or ph7"))
 
-    with open(settings.ph_calibration, 'r+') as f:
+    hi_lo, known_ph = raw_input("Enter <hi or lo>, <known>").split(',')
+
+
+    with open('../data/ph_calibration.json', 'r+') as f:
         existing = json.loads(f.read())
         f.seek(0)
-        existing[ph_kind] = res
-        f.write(json.dumps())
+        existing['ph_%s_cal' % hi_lo] = res
+        existing['ph_%s_known' % hi_lo] = known_ph
+        f.write(json.dumps(existing))
+        f.truncate()
         print "New config is..."
         print existing
 
