@@ -6,6 +6,7 @@ DEVICE_ADDRESS = 0x4d
 
 
 def main():
+    bus = smbus.SMBus(1)
 
     adc_res = 0.0
     for i in range(0, 20):
