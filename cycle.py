@@ -6,8 +6,8 @@ import threading
 
 PUMP = 26
 VALVE = 24
-DRAIN_DURATION = 2400
-FILL_DURATION = 1200
+DRAIN_DURATION = 1900
+FILL_DURATION = 800
 
 class Cycle(object):
 
@@ -27,8 +27,8 @@ class Cycle(object):
         self.logger.info("Drain and pump off")
         GPIO.output(PUMP, GPIO.LOW)
         GPIO.output(VALVE, GPIO.LOW)
-        self.state.set_draining(False)
-        self.state.set_filling(False)
+        self.state.set_draining(False, 0)
+        self.state.set_filling(False, 0)
 
 
 
