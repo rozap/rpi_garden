@@ -3,7 +3,7 @@ from math import floor
 
 class Window(object):
 
-    def __init__(self, size = 200):
+    def __init__(self, size = 50):
         self.window = deque([], size)
 
     def add(self, value):

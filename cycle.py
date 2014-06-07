@@ -6,8 +6,9 @@ import threading
 
 PUMP = 26
 VALVE = 24
-DRAIN_DURATION = 1900
-FILL_DURATION = 800
+DRAIN_DURATION = 800
+FILL_DURATION = 150
+SIT_DURATION = 240
 
 class Cycle(object):
 
@@ -23,12 +24,13 @@ class Cycle(object):
 
 
 
-    def stop(self):
+    def stop(self, duration = 0):
         self.logger.info("Drain and pump off")
         GPIO.output(PUMP, GPIO.LOW)
         GPIO.output(VALVE, GPIO.LOW)
         self.state.set_draining(False, 0)
         self.state.set_filling(False, 0)
+        sleep(duration)
 
 
 
@@ -56,8 +58,9 @@ class Cycle(object):
         while True:
             self.logger.info("Cycle happening...")
             try:
-                self.drain(DRAIN_DURATION)
                 self.fill(FILL_DURATION)
+                self.stop(SIT_DURATION)
+                self.drain(DRAIN_DURATION)
             except Exception as e:
                 self.logger.critical(str(e))
 
