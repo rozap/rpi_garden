@@ -6,8 +6,8 @@ import threading
 
 PUMP = 26
 VALVE = 24
-DRAIN_DURATION = 800
-FILL_DURATION = 150
+DRAIN_DURATION = 900
+FILL_DURATION = 70
 SIT_DURATION = 240
 
 class Cycle(object):
@@ -58,9 +58,10 @@ class Cycle(object):
         while True:
             self.logger.info("Cycle happening...")
             try:
-                self.fill(FILL_DURATION)
-                self.stop(SIT_DURATION)
                 self.drain(DRAIN_DURATION)
+                self.fill(FILL_DURATION)
+            #    self.stop(SIT_DURATION)
+                #self.drain(DRAIN_DURATION)
             except Exception as e:
                 self.logger.critical(str(e))
 

@@ -39,11 +39,7 @@ def fill(duration):
 def main():
     init()
     stop()
-
-
-    while True:
-	fill(30)
-	drain(6)
+    drain(120)
 
 if __name__ == '__main__':
     main()
