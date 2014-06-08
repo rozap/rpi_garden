@@ -1,0 +1,21 @@
+{
+  "name": "garden",
+  "version": "0.0.0",
+  "description": "a a garden",
+  "author": "rozap",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [],
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "*",
+    "gulp-nodemon": "*",
+    "gulp-less": "*",
+    "gulp-uglify": "*",
+    "gulp-minify-css": "*"
+  },
+  "scripts": {},
+  "license": "MIT"
+}
