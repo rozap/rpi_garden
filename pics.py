@@ -13,6 +13,6 @@ def main():
         img = cam.get_image()
         pygame.image.save(img,"static/now.jpg")
         cam.stop()
-        sleep(10)
+        sleep(2)
 
 main()
