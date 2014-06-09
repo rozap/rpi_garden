@@ -42,28 +42,14 @@ class State(object):
             }
         }
 
-    def set(self, state):
-        self.state = state
+    def set(self, action, duration):
+        self.state['action'] = action
+        self.state['started'] = now()
+        self.state['duration'] = duration
 
     def get(self):
         self.state['now'] = now() 
         return self.state
-
-    def set_filling(self, b, duration):
-        self.state['draining']['is'] = False
-        self.state['filling'] = {
-            'is' : b,
-            'duration' : duration,
-            'started' : now()
-        }
-
-    def set_draining(self, b, duration):
-        self.state['filling']['is'] = False
-        self.state['draining'] = {
-            'is' : b,
-            'duration' : duration,
-            'started' : now()
-        }
 
 
 

@@ -28,15 +28,14 @@ class Cycle(object):
         self.logger.info("Drain and pump off")
         GPIO.output(PUMP, GPIO.LOW)
         GPIO.output(VALVE, GPIO.LOW)
-        self.state.set_draining(False, 0)
-        self.state.set_filling(False, 0)
+        self.state.set('sitting', duration)
         sleep(duration)
 
 
 
     def drain(self, duration):
         self.logger.info("Starting drain")
-        self.state.set_draining(True, duration)
+        self.state.set('draining', duration)
         GPIO.output(PUMP, GPIO.LOW)
         GPIO.output(VALVE, GPIO.HIGH)
         sleep(duration)
@@ -46,7 +45,7 @@ class Cycle(object):
 
     def fill(self, duration):
         self.logger.info("Starting fill")
-        self.state.set_filling(True, duration)
+        self.state.set('filling', duration)
         GPIO.output(VALVE, GPIO.LOW)
         GPIO.output(PUMP, GPIO.HIGH)
         sleep(duration)
