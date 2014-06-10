@@ -35,13 +35,14 @@ require.config({
 require([
 	'underscore',
 	'backbone',
+	'd3',
 	'rickshaw',
 	'collections',
 	'models',
 	'text!templates/chart.html',
 	'text!templates/state.html',
 
-], function(_, Backbone, rickshaw, Collections, Models, ChartTemplateView, StateViewTemplate) {
+], function(_, Backbone, d3, rickshaw, Collections, Models, ChartTemplateView, StateViewTemplate) {
 
 
 	var app = {
@@ -104,19 +105,24 @@ require([
 			this._graph = new rickshaw.Graph({
 				element: $('#' + this.$el.attr('id') + '-chart')[0],
 				renderer: 'area',
+				min: this.minY, 
+				max: this.maxY,
 				series: this.adaptData(),
 			});
 			new Rickshaw.Graph.Axis.Time({
 				graph: this._graph
 			});
 
-			new Rickshaw.Graph.Axis.Y({
+			var yOpts = {
 				graph: this._graph,
 				orientation: 'left',
 				width: 80,
 				tickFormat: Rickshaw.Fixtures.Number.formatKMBT,
 				element: $('#' + this.$el.attr('id') + 'chart-y-axis')[0],
-			});
+			};
+
+			new Rickshaw.Graph.Axis.Y(yOpts);
+
 
 			var hoverDetail = new Rickshaw.Graph.HoverDetail({
 				graph: this._graph,
@@ -157,6 +163,8 @@ require([
 		yName: 'ph',
 		series: Collections.PHCollection,
 		color: '#A9C388',
+	        minY: 5.8,
+	        maxY: 8
 	});
 
 	var TempChartView = ChartView.extend({
@@ -167,6 +175,8 @@ require([
 		yUnits: 'degrees',
 		series: Collections.TempCollection,
 		color: '#F54551',
+	        minY: 73,
+	        maxY: 78
 	});
 
 	var LevelChartView = ChartView.extend({
@@ -177,6 +187,8 @@ require([
 		yUnits: 'inches',
 		series: Collections.LevelCollection,
 		color: '#015A61',
+	        minY: 20, 
+	        maxY: 29
 	});
 
 	var StateView = Backbone.View.extend({

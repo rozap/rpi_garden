@@ -5,7 +5,7 @@ define([
 
 	var APICollection = Backbone.Collection.extend({
 
-		pageSize: 1000,
+		pageSize: 500,
 		page: 0,
 
 		initialize: function(props, app) {
