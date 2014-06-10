@@ -7,8 +7,9 @@ import threading
 PUMP = 26
 VALVE = 24
 DRAIN_DURATION = 580
-FILL_DURATION = 90
-SIT_DURATION = 240
+FILL_DURATION = 105
+SIT_DURATION = 1000
+STOP_DURATION
 
 class Cycle(object):
 
@@ -30,6 +31,18 @@ class Cycle(object):
         GPIO.output(VALVE, GPIO.LOW)
         self.state.set('sitting', duration)
         sleep(duration)
+
+
+    def sit(self, duration = 100):
+        self.logger.info("Drain and pump off")
+
+        i = 0
+        top_duration = 8
+        wait_duration = 92
+        while i < duration:
+            self.fill(top_duration)
+            self.stop(wait_duration)
+            i += (top_duration + wait_duration)
 
 
 
@@ -59,8 +72,9 @@ class Cycle(object):
             try:
             #    self.drain(DRAIN_DURATION)
                 self.fill(FILL_DURATION)
-                self.stop(SIT_DURATION)
+                self.sit(SIT_DURATION)
                 self.drain(DRAIN_DURATION)
+                self.stop(STOP_DURATION)
             except Exception as e:
                 self.logger.critical(str(e))
 
