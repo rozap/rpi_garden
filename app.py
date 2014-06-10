@@ -30,16 +30,9 @@ class State(object):
 
     def __init__(self):
         self.state = {
-        'draining' : {
-            'is' : True,
-            'duration' : 0,
-            'started' : now()
-            }, 
-        'filling' : {
-            'is' : False, 
-            'duration' : 0, 
-            'started' : now()
-            }
+            'action' : 'sitting',
+            'duration' : 100,
+            'now' : now()
         }
 
     def set(self, action, duration):
