@@ -245,7 +245,7 @@ require([
                     return;
                 }
                 var img = this.images[counter];
-                ctx.drawImage(img, 0, 0, img.naturalWidth * .25, img.naturalHeight * .25);
+                ctx.drawImage(img, 0, 0, img.naturalWidth, img.naturalHeight);
                 counter++;
             }.bind(this), 20);
         },
