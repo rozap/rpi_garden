@@ -20,6 +20,7 @@ class Cycle(object):
         self.logger = logger
         self.state = state
         self.thread = threading.Thread(target = self.cycle)
+        self.thread.setDaemon(True)
         self.thread.start()
 
 

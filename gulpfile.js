@@ -6,7 +6,7 @@ var gulp = require('gulp'),
     node;
 
 var paths = {
-    clientScripts: ['./static/js/**/*.js', './static/**/*.js'],
+    clientScripts: ['./static/js/**/*.js', './static/**/*.js', '!./static/js/min/*.js', '!./static/js/min/**/*.js'],
     less: ['./static/*.less'],
     css: './static/',
 };

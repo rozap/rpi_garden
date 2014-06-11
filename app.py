@@ -1,5 +1,6 @@
 from flask import Flask, render_template
-from api.api import Api 
+from api.api import Api
+from timelapse import Timelapse
 import sys
 from time import mktime
 from datetime import datetime
@@ -50,11 +51,14 @@ if __name__ == "__main__":
     print sys.argv
     logger = setup_logger()
     state = State()
+    threads = []
     if not len(sys.argv) == 2 or not sys.argv[1] == 'web':
         from stats.collector import CollectionManager
         from cycle import Cycle
-        collection_manager = CollectionManager(logger)
-        cycle = Cycle(state, logger)
+        threads.append(CollectionManager(logger))
+        threads.append(Cycle(state, logger))
     Api(app, state)
+    threads.append(Timelapse(logger))
     print "Running web app..."
     app.run(host = '0.0.0.0', debug = True)
+    print "Done..."

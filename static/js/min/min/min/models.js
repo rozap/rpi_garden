@@ -1,0 +1,1 @@
+define(["underscore","backbone"],function(e,t){var n=t.Model.extend({initialize:function(e,t){t.dispatcher.on("update",this.fetch.bind(this))},url:function(){return"/api/state"}});return{State:n}});
