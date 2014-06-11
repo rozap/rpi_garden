@@ -245,7 +245,8 @@ require([
                     return;
                 }
                 var img = this.images[counter];
-                ctx.drawImage(img, 0, 0, 640, 480, 0, 0, 640, 480);
+                console.log(img.width, img.height)
+                ctx.drawImage(img, 0, 0);
                 counter++;
             }.bind(this), 20);
         },
