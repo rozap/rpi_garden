@@ -229,6 +229,7 @@ require([
             this.images = [];
             console.log("RUNNING")
             this.load(0);
+            this.off('loadedBatch');
             this.on('loadedBatch', this.play.bind(this));
         },
 
