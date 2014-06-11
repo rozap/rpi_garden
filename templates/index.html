@@ -13,14 +13,33 @@
 		<h4 class="muted">sum plant stats 4 u</h4>
 
 		<div id="state-view"></div>
-
-		<div class="charts">
-			<div class="chart-wrap" id="ph-view"></div>
-			<div class="chart-wrap" id="temp-view"></div>
-			<div class="chart-wrap" id="level-view"></div>
-			<div class="chart-wrap">
-				<img style="height:250px;" src="/static/now.jpg"/>
+		<div class="pure-g">
+			<div class="charts">
+				<div class="pure-u-1-2">
+					<div class="chart-wrap" id="ph-view"></div>
+				</div>
+				<div class="pure-u-1-2">
+					<div class="chart-wrap" id="temp-view"></div>
+				</div>
+				<div class="pure-u-1-2">
+					<div class="chart-wrap" id="level-view"></div>
+				</div>
+				<div class="now pure-u-1-2">
+					<img src="/static/now.jpg"/>
+				</div>
 			</div>
+		</div>
+
+		<div class="pure-g">
+			<div class="pure-u-1-1" id="timelapse">
+				<canvas></canvas>
+
+				<a href="javascript:void(0)" 
+					class="run-timelapse">
+					Run Timelapse
+				</a>
+			</div>
+
 		</div>
 
 	</body>
