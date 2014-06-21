@@ -300,7 +300,6 @@ require([
 
     new PHChartView();
     new TempChartView();
-    new LevelChartView();
     new StateView();
     new TimelapseView();
 
