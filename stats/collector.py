@@ -11,7 +11,7 @@ class CollectionManager(object):
 
     def __init__(self, logger):
         self.logger = logger
-        self.collectors = [PHCollector(), LevelCollector(), TempCollector()]
+        self.collectors = [PHCollector(), TempCollector()]
         self.thread = threading.Thread(target = self.collect, args = (self.collectors,))
         self.thread.setDaemon(True)
         self.thread.start()

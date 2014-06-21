@@ -42,8 +42,9 @@ def main():
 
 
     while True:
-	fill(30)
-	drain(6)
+	stop()
+	sleep(2)
+	drain(2)
 
 if __name__ == '__main__':
     main()
