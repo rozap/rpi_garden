@@ -44,10 +44,10 @@ def fill(duration):
 
 def main():
     init()
-    while True:
-        drain(2)
-        fill(2)
-	light(2)
-	stop(4)
+    for i in range(0, 5):
+	print "FILLING"
+        fill(5)
+	print "STOPPING"
+        stop(5)
 if __name__ == '__main__':
     main()
