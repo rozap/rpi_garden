@@ -9,7 +9,6 @@ LIGHTS = 22
 
 
 def init():
-    return
     GPIO.setmode(GPIO.BOARD)
 
 
