@@ -29,14 +29,14 @@ class Timelapse(object):
             if isfile(now_image):
                 images = [f for f in listdir(DIR) if self.is_image(join(DIR,f))]
                 try:
-                    next_index = max([int(i.split('-')[0]) for i in images]) + 1
+                    next_index = max([int(i.split('-')[1].split('.')[0]) for i in images]) + 1
                 except:
                     next_index = 0
 
-                copyfile(now_image, DIR + '%s-image.jpg' % next_index)
+                copyfile(now_image, DIR + 'image-%07d.jpg' % next_index)
 
 
             process = Popen(['fswebcam', '-r', '1024x768', '-d', '/dev/video0', '--save', now_image], stdout=PIPE)
             stdout, stderr = process.communicate()
 
-            sleep(60)
+            sleep(60 * 10)

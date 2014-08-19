@@ -176,7 +176,7 @@ require([
         series: Collections.TempCollection,
         color: '#F54551',
         minY: 73,
-        maxY: 78
+        maxY: 83
     });
 
     var LevelChartView = ChartView.extend({
@@ -300,7 +300,6 @@ require([
 
     new PHChartView();
     new TempChartView();
-    new LevelChartView();
     new StateView();
     new TimelapseView();
 

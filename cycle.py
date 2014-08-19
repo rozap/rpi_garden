@@ -4,12 +4,12 @@ import threading
 
 
 
-PUMP = 26
-VALVE = 24
-DRAIN_DURATION = 580
-FILL_DURATION = 105
-SIT_DURATION = 1000
-STOP_DURATION = 120
+PUMP = 24
+VALVE = 26
+DRAIN_DURATION = 1000
+FILL_DURATION = 30
+SIT_DURATION = 0
+STOP_DURATION = 0
 
 class Cycle(object):
 
@@ -37,13 +37,6 @@ class Cycle(object):
     def sit(self, duration = 100):
         self.logger.info("Drain and pump off")
 
-        i = 0
-        top_duration = 8
-        wait_duration = 92
-        while i < duration:
-            self.fill(top_duration)
-            self.stop(wait_duration)
-            i += (top_duration + wait_duration)
 
 
 
@@ -71,11 +64,14 @@ class Cycle(object):
         while True:
             self.logger.info("Cycle happening...")
             try:
-            #    self.drain(DRAIN_DURATION)
-                self.fill(FILL_DURATION)
+		self.logger.info("cycle: Filling for %s" % FILL_DURATION)
+	        self.fill(FILL_DURATION)
+		self.logger.info("cycle: Sitting for %s" % SIT_DURATION)
                 self.sit(SIT_DURATION)
+		self.logger.info("cycle: Draining for %s" % DRAIN_DURATION)
                 self.drain(DRAIN_DURATION)
-                self.stop(STOP_DURATION)
+		self.logger.info("cycle: Stopping for %s" % STOP_DURATION)
+		self.stop(STOP_DURATION)
             except Exception as e:
                 self.logger.critical(str(e))
 
