@@ -59,8 +59,8 @@ if __name__ == "__main__":
         threads.append(CollectionManager(logger))
         threads.append(Cycle(state, logger))
         threads.append(Lights(state, logger))
-    #Api(app, state)
-    #threads.append(Timelapse(logger))
+    Api(app, state)
+#    threads.append(Timelapse(logger))
     print "Running web app..."
     app.run(host = '0.0.0.0', debug = True)
     print "Done..."
