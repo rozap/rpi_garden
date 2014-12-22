@@ -8,7 +8,7 @@ LIGHT = 22
 LIGHT_DURATION = 3600 * 12
 DARK_DURATION = 3600 * 12
 
-class Cycle(object):
+class Lights(object):
 
     def __init__(self, state, logger):
         GPIO.setmode(GPIO.BOARD)

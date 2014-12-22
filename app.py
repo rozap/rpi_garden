@@ -55,12 +55,12 @@ if __name__ == "__main__":
     if not len(sys.argv) == 2 or not sys.argv[1] == 'web':
         from stats.collector import CollectionManager
         from cycle import Cycle
-        from lights import Lights
+        from light import Lights
         threads.append(CollectionManager(logger))
         threads.append(Cycle(state, logger))
         threads.append(Lights(state, logger))
-    Api(app, state)
-    threads.append(Timelapse(logger))
+    #Api(app, state)
+    #threads.append(Timelapse(logger))
     print "Running web app..."
     app.run(host = '0.0.0.0', debug = True)
     print "Done..."
