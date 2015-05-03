@@ -18,14 +18,15 @@ def main():
     res = adc_res / 20
     print "Res is %s" % res
 
-    hi_lo, known_ph = raw_input("Enter <hi or lo>, <known>").split(',')
-    known_ph = float(known_ph.strip())
+    known_ph = raw_input("Enter <7 or 4>").strip()
+    if known_ph != "7" and known_ph != "4":
+        raise "Only use 7 or 4..."
+
 
     with open('../data/ph_calibration.json', 'r+') as f:
         existing = json.loads(f.read())
         f.seek(0)
-        existing['ph_%s_cal' % hi_lo] = res
-        existing['ph_%s_known' % hi_lo] = known_ph
+        existing['ph%s_cal' % known_ph] = res
         f.write(json.dumps(existing))
         f.truncate()
         print "New config is..."

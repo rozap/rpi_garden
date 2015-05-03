@@ -47,14 +47,6 @@ class PHCollector(StatCollector):
         self.ph_step = ((((self.v_ref * (self.ph7_cal - self.ph4_cal)) / 4096.0) * 1000.0) / self.op_amp_gain) / 3
 
 
-    def calibrate_ph4(self, cal_num):
-        self.ph4_cal = cal_num
-        self.calculate_slope()
-
-    def calibrate_ph7(self, cal_num):
-        self.ph7_cal = cal_num
-        self.calculate_slope()
-
     def calculate_ph(self, res):
         millivolts = (res / 4096.0) * self.v_ref * 1000.0
         temp = ((((self.v_ref * self.ph7_cal) / 4096.0) * 1000.0) - millivolts) / self.op_amp_gain
