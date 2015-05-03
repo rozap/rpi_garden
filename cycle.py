@@ -5,10 +5,10 @@ import threading
 
 
 PUMP = 24
-VALVE = 26
-DRAIN_DURATION = 2000
-FILL_DURATION = 25
-SIT_DURATION = 0
+VALVE = 21
+DRAIN_DURATION = 1000
+FILL_DURATION = 84
+SIT_DURATION = 200
 STOP_DURATION = 0
 
 class Cycle(object):
@@ -28,23 +28,18 @@ class Cycle(object):
 
     def stop(self, duration = 0):
         self.logger.info("Drain and pump off")
-        GPIO.output(PUMP, GPIO.LOW)
-        GPIO.output(VALVE, GPIO.LOW)
+        GPIO.output(PUMP, GPIO.HIGH)
+        GPIO.output(VALVE, GPIO.HIGH)
         self.state.set('sitting', duration)
         sleep(duration)
-
-
-    def sit(self, duration = 100):
-        self.logger.info("Drain and pump off")
-
 
 
 
     def drain(self, duration):
         self.logger.info("Starting drain")
         self.state.set('draining', duration)
-        GPIO.output(PUMP, GPIO.LOW)
-        GPIO.output(VALVE, GPIO.HIGH)
+        GPIO.output(PUMP, GPIO.HIGH)
+        GPIO.output(VALVE, GPIO.LOW)
         sleep(duration)
         self.stop()
 
@@ -53,8 +48,8 @@ class Cycle(object):
     def fill(self, duration):
         self.logger.info("Starting fill")
         self.state.set('filling', duration)
-        GPIO.output(VALVE, GPIO.LOW)
-        GPIO.output(PUMP, GPIO.HIGH)
+        GPIO.output(VALVE, GPIO.HIGH)
+        GPIO.output(PUMP, GPIO.LOW)
         sleep(duration)
         self.stop()
 
@@ -67,7 +62,7 @@ class Cycle(object):
 		self.logger.info("cycle: Filling for %s" % FILL_DURATION)
 	        self.fill(FILL_DURATION)
 		self.logger.info("cycle: Sitting for %s" % SIT_DURATION)
-                self.sit(SIT_DURATION)
+                self.stop(SIT_DURATION)
 		self.logger.info("cycle: Draining for %s" % DRAIN_DURATION)
                 self.drain(DRAIN_DURATION)
 		self.logger.info("cycle: Stopping for %s" % STOP_DURATION)

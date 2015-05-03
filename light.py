@@ -4,9 +4,9 @@ import threading
 
 
 
-LIGHT = 22
-LIGHT_DURATION = 3600 * 19
-DARK_DURATION = 3600 * 5
+LIGHT = 26
+LIGHT_DURATION = 3600 * 18
+DARK_DURATION = 3600 * 6
 
 class Lights(object):
 
@@ -31,7 +31,6 @@ class Lights(object):
         self.logger.info("Lights turned ON")
         GPIO.output(LIGHT, GPIO.LOW)
         sleep(duration)
-        self.stop()
 
 
 
@@ -40,7 +39,8 @@ class Lights(object):
             self.logger.info("Light Cycle...")
             try:
                 self.on(LIGHT_DURATION)
-                self.off(DARK_DURATION)
+        	self.off(DARK_DURATION)
+                #self.on(LIGHT_DURATION)
             except Exception as e:
                 self.logger.critical(str(e))
 

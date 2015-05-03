@@ -48,6 +48,7 @@ class State(object):
 
 
 if __name__ == "__main__":
+    print "STARTING"
     print sys.argv
     logger = setup_logger()
     state = State()
@@ -56,11 +57,13 @@ if __name__ == "__main__":
         from stats.collector import CollectionManager
         from cycle import Cycle
         from light import Lights
+        from feeder import Feeder
         threads.append(CollectionManager(logger))
         threads.append(Cycle(state, logger))
         threads.append(Lights(state, logger))
+	threads.append(Feeder(state, logger))
     Api(app, state)
-#    threads.append(Timelapse(logger))
+    threads.append(Timelapse(logger))
     print "Running web app..."
-    app.run(host = '0.0.0.0', debug = True)
+    app.run(host = '0.0.0.0', debug = False)
     print "Done..."

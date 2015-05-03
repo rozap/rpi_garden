@@ -38,5 +38,7 @@ class Timelapse(object):
 
             process = Popen(['fswebcam', '-r', '1024x768', '-d', '/dev/video0', '--save', now_image], stdout=PIPE)
             stdout, stderr = process.communicate()
+            process = Popen(['convert', now_image,  '-rotate', '180', now_image])
+            stdout, stderr = process.communicate()
 
             sleep(60 * 10)

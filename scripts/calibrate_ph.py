@@ -19,7 +19,7 @@ def main():
     print "Res is %s" % res
 
     hi_lo, known_ph = raw_input("Enter <hi or lo>, <known>").split(',')
-
+    known_ph = float(known_ph.strip())
 
     with open('../data/ph_calibration.json', 'r+') as f:
         existing = json.loads(f.read())
