@@ -1,7 +1,8 @@
 import smbus
 import json
+from time import sleep
 DEVICE_ADDRESS = 0x4d 
-
+NUM_SAMPLES = 40
 
 
 
@@ -9,14 +10,15 @@ def main():
     bus = smbus.SMBus(1)
 
     adc_res = 0.0
-    for i in range(0, 20):
+    for i in range(0, NUM_SAMPLES):
         bytes = bus.read_i2c_block_data(DEVICE_ADDRESS, 1)
         hi = bytes[0]
         lo = bytes[1]
         adc_res += (hi * 256.0) + lo
+        sleep(.5)
 
-    res = adc_res / 20
-    print "Res is %s" % res
+    res = adc_res / NUM_SAMPLES
+    print "Res is from %s samples is %s" % (NUM_SAMPLES, res)
 
     known_ph = raw_input("Enter <7 or 4>").strip()
     if known_ph != "7" and known_ph != "4":
