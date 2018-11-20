@@ -2,10 +2,9 @@ import RPi.GPIO as GPIO
 from time import sleep
 import threading
 
-
-
 PUMP = 24
-VALVE = 21
+VALVE_OPEN = 21
+VALVE_CLOSE = 22
 DRAIN_DURATION = 1000
 FILL_DURATION = 84
 SIT_DURATION = 200
@@ -16,44 +15,42 @@ class Cycle(object):
     def __init__(self, state, logger):
         GPIO.setmode(GPIO.BOARD)
         GPIO.setup(PUMP, GPIO.OUT)
-        GPIO.setup(VALVE, GPIO.OUT)
+        GPIO.setup(VALVE_OPEN, GPIO.OUT)
+	GPIO.setup(VALVE_CLOSE, GPIO.OUT)
         self.logger = logger
         self.state = state
         self.thread = threading.Thread(target = self.cycle)
         self.thread.setDaemon(True)
         self.thread.start()
 
-
-
-
+	
     def stop(self, duration = 0):
         self.logger.info("Drain and pump off")
         GPIO.output(PUMP, GPIO.HIGH)
-        GPIO.output(VALVE, GPIO.HIGH)
+        GPIO.output(VALVE_OPEN, GPIO.HIGH)
+	GPIO.output(VALVE_CLOSE, GPIO.HIGH)
         self.state.set('sitting', duration)
         sleep(duration)
 
-
-
+	
     def drain(self, duration):
         self.logger.info("Starting drain")
         self.state.set('draining', duration)
         GPIO.output(PUMP, GPIO.HIGH)
-        GPIO.output(VALVE, GPIO.LOW)
+        GPIO.output(VALVE_OPEN, GPIO.LOW)
+	GPIO.output(VALVE_CLOSE, GPIO.HIGH)
         sleep(duration)
         self.stop()
 
-
-
+	
     def fill(self, duration):
         self.logger.info("Starting fill")
         self.state.set('filling', duration)
-        GPIO.output(VALVE, GPIO.HIGH)
+        GPIO.output(VALVE_CLOSE, GPIO.LOW)
+	GPIO.output(VALVE_OPEN, GPIO.HIGH)
         GPIO.output(PUMP, GPIO.LOW)
         sleep(duration)
         self.stop()
-
-
 
     def cycle(self):
         while True:
