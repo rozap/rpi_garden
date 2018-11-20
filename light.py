@@ -5,8 +5,8 @@ import threading
 
 
 LIGHT = 26
-LIGHT_DURATION = 3600 * 18
-DARK_DURATION = 3600 * 6
+LIGHT_DURATION = 3600 * 12
+DARK_DURATION = 3600 * 12
 
 class Lights(object):
 
@@ -18,21 +18,15 @@ class Lights(object):
         self.thread.setDaemon(True)
         self.thread.start()
 
-
-
     def off(self, duration):
         self.logger.info("Lights turned OFF")
         GPIO.output(LIGHT, GPIO.HIGH)
         sleep(duration)
 
-
-
     def on(self, duration):
         self.logger.info("Lights turned ON")
         GPIO.output(LIGHT, GPIO.LOW)
         sleep(duration)
-
-
 
     def light(self):
         while True:
